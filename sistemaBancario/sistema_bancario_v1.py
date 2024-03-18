@@ -1,5 +1,6 @@
-saldo_total = 12500.30
+saldo_total = 0.0
 count_saque = count_deposito = 0
+LIMITE_SAQUES = 3
 
 def sacar(saldo):
 
@@ -35,11 +36,12 @@ def depositar(saldo):
     return saldo
 
 def exibir_extrato(depositos, saques, saldo):
-
-    print('Atualizações diárias da conta: \n')
+    print(' EXTRATO '.center(37, '#'))
+    print('\nAtualizações diárias da conta: \n')
     print(f'Depositos realizados: {depositos}')
     print(f'Saques realizados: {saques}')
     print(f'\nSaldo total em conta: R$ {saldo:.2f}')
+    print('\n#####################################')
 
 index = """
 [s] - Sacar
@@ -53,7 +55,7 @@ while True:
     opcao = input(index)
 
     if opcao in ['s', 'S']:
-        if (count_saque >= 3):
+        if (count_saque >= LIMITE_SAQUES):
             print('Limites de 3 saques diários já realizados!')
         else:
             saldo_total = sacar(saldo_total)
